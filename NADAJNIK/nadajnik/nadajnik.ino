@@ -1,7 +1,7 @@
 #define nad 3
 #define odb A0
 int odb_val=0;
-int interval=85;
+int interval=100; //75-84 nadawania dla 86-120 odbierania
 long StartTime=0;
 long  EndTime=0;
 boolean ZapalDiode=false;
@@ -14,5 +14,5 @@ void setup() {
 
 void loop() {
 Timer();
-//Odbiornik();
+
 }
