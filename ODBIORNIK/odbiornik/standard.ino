@@ -21,7 +21,7 @@ if(millis()>czas_do_kalibracji){
   czas_trwania_kalibracji = millis();
   maxThreshold=0;
   minThreshold=1023;
-  while(millis()<czas_trwania_kalibracji+1000)
+  while(millis()<czas_trwania_kalibracji+250)
   {
     odb_val=analogRead(odb);
     if(odb_val>maxThreshold){
@@ -54,14 +54,12 @@ if(odb_val>midThreshold+margin && OdbCheck)
   StartTime=millis();
   OdbCheck=false;
   czas_zbadany=StartTime-EndTime;
-  Serial.print("czaszbadany");
-  Serial.println(czas_zbadany);
 }
 if(odb_val<midThreshold-margin && !OdbCheck)
 {
   OdbCheck=true;
 }
-  if(czas_zbadany>20 && czas_zbadany<250)
+  if(czas_zbadany>160 && czas_zbadany<230)
 {
   digitalWrite(tak,HIGH);
   digitalWrite(nie,LOW);
@@ -72,10 +70,5 @@ else{
   digitalWrite(tak,LOW);
   digitalWrite(nie,HIGH);
 }
-if(millis()-StartTime>200)
-{
-    digitalWrite(tak,LOW);
-  digitalWrite(nie,HIGH);
-  czas_zbadany=0;
-}
+
 }
